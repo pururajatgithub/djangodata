@@ -1,0 +1,147 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+        <link rel="stylesheet" href=" https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+
+    <title>title</title>
+    <style>
+        
+
+        table{
+            border-spacing: 0px;
+            table-layout: fixed;
+            margin-left: auto;
+            margin-right: auto;
+            
+
+        }
+        
+        
+        .spntag{
+
+            padding: 5px;
+            width: auto;
+            table-layout: auto;
+            
+        }
+        
+        
+    </style>
+</head>
+<!-- Body  -->
+
+<body class="container container-fuid">
+    {% block content %}
+    
+        <h3>Bank Branches</h3>
+        
+        <div id="select" class="row" >
+        <div class="col margin-auto" >
+            <form class="" action="" method="GET" style=" float:left;">
+                
+                
+                <select name="city" id="city" aria-placeholder="City" onchange="this.form.submit()" style="border-radius: 10px; border:groove">
+                    
+                    {% for i in cities %}
+                    <option value="{{i.city}}">{{i.city}}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+        
+
+            <div class="col margin-auto">
+            <form class="" action="" method="GET" style="margin-left: 70px;">
+                    
+                
+                <input type="text" class="" id="search" name="search" placeholder="Search.." style="border-radius: 10px; border:groove">
+                <button type="submit" class="btn btn-secondary" style="border-radius:10px;"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+            <div class="col margin-auto">
+                    <form class="" action="" method="GET" style="float: right;">
+                        <input type="submit" name="reset" id="reset" class="btn btn-secondary" value="Reset" style="border-radius:10px;" />
+                    </form>
+            </div>
+            
+        </div>
+
+    
+        
+        <div class="container mb-3 mt-3">
+            <table class="table table-striped table-bordered mydatatable"  style="margin-top:10px; width: 100%;">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Bank Id</th>
+                        <th>Bank Name</th>
+                        <th>IFSC Code</th>
+                        <th>Branch</th>
+                        <th>City</th>
+                        <th>Address</th>
+                        <th>District</th>
+                        <th>State</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in values %}
+                    <span class="spntag">
+                    <tr>
+                        
+                        <th  class="block">{{data.bank_id}}</th>
+                        <td  class="block">{{data.bank_name}}</td>
+                        <td  class="block">{{data.ifsc_code}}</td>
+                        <td  class="block">{{data.Branch}}</td>
+                        <td  class="block">{{data.city}}</td>
+                        <td  class="block" style="word-break: break-all">{{data.address}}</td>
+                        <td  class="block">{{data.District}}</td>
+                        <td  class="block">{{data.State}}</td>
+                    </tr>
+                    </span>
+                    {% endfor %}
+                    
+                    
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+            
+         
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+
+        <script>
+            $('.mydatatable').DataTable({searching: false});
+        </script>
+        
+</body>
+{% endblock %}
+</html>
